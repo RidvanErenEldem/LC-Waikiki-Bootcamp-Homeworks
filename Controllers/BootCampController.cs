@@ -28,17 +28,25 @@ namespace bootcamp_hw1.Controllers
         }
 
         [HttpPost]
-        public async Task<BootCamp> Add([FromBody] BootCampResponse resource)
+        public async Task<IActionResult> Add([FromBody] BootCampResponse resource)
         {
             var bootcamp = new BootCamp();
             bootcamp.Name = resource.Name;
             bootcamp.Description = resource.Description;
-            var newBootCamp = await context.BootCamp.AddAsync(bootcamp);
-            await context.SaveChangesAsync();
-            return bootcamp;
+            try
+            {
+                var newBootCamp = await context.BootCamp.AddAsync(bootcamp);
+                await context.SaveChangesAsync();
+                return Ok(bootcamp);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest($"Error When adding Bootcamp: {ex.Message}");
+            }
+            
         }
         [HttpPut]
-        public async Task<BootCamp> Update(int Id, [FromBody] BootCampResponse resource)
+        public async Task<IActionResult> Update(int Id, [FromBody] BootCampResponse resource)
         {
             var bootcamp = new BootCamp();
             bootcamp.Name = resource.Name;
@@ -48,28 +56,24 @@ namespace bootcamp_hw1.Controllers
             {
                 var updatedBootcamp = context.BootCamp.Update(bootcamp);
                 await context.SaveChangesAsync();
-                return bootcamp;
+                return Ok(bootcamp);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred when updating: {ex.Message}");
-                return null;
+                return BadRequest($"An error occurred when updating: {ex.Message}");
             }
         }
         [HttpDelete]
-        public async Task<BootCamp> Delete(int Id)
+        public async Task<IActionResult> Delete(int Id)
         {
             try
             {
                 var bootcamp = await context.BootCamp.FindAsync(Id);
                 if(bootcamp == null)
-                {
-                    Console.WriteLine($"The bootcamp with id {Id} does not exist");
-                    return null;
-                }
+                    return BadRequest($"The bootcamp with id {Id} does not exist");
                 var deletedBootcamp = context.BootCamp.Remove(bootcamp);
                 await context.SaveChangesAsync();
-                return bootcamp;
+                return  Ok(bootcamp);
             }
             catch(Exception ex)
             {
@@ -78,19 +82,13 @@ namespace bootcamp_hw1.Controllers
             }
         }
         [HttpGet("{Id}/searchById")]
-        public async Task<BootCamp> SearchById(int Id)
+        public async Task<IActionResult> SearchById(int Id)
         {
             var bootcamp = await context.BootCamp.FindAsync(Id);
             if(bootcamp == null)
-            {
-                var bootCampResponse = new BootCamp();
-                bootCampResponse.Name = "thank you mario but bootcamp is in another castle";
-                bootCampResponse.Id = Id;
-                bootCampResponse.Description = null;
-                return bootCampResponse;
-            }
+                return BadRequest("thank you mario but bootcamp is in another castle");
             else
-                return bootcamp;
+                return Ok(bootcamp);
         }
     }
 }

@@ -6882,11 +6882,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\ridva\\Documents\\Github\\bootcamp-hw1\\bootcamp-hw1.csproj",
+      "projectUniqueName": "C:\\Users\\ridva\\Documents\\Github\\bootcamp-hw1\\bootcamp-hw1.csproj",
       "projectName": "bootcamp-hw1",
-      "projectPath": "c:\\Users\\ridva\\Documents\\Github\\bootcamp-hw1\\bootcamp-hw1.csproj",
+      "projectPath": "C:\\Users\\ridva\\Documents\\Github\\bootcamp-hw1\\bootcamp-hw1.csproj",
       "packagesPath": "C:\\Users\\ridva\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\ridva\\Documents\\Github\\bootcamp-hw1\\obj\\",
+      "outputPath": "C:\\Users\\ridva\\Documents\\Github\\bootcamp-hw1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ridva\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6958,6 +6958,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.16, 5.0.16]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -6966,7 +6972,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

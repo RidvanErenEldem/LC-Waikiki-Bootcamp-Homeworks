@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6YQIdtnypPlWVcvjdA0vkbbrOnwyH+IngeR4grtwRz+H2g+TomKuMF1YBq/ksI1F3mv5ZpGMvohCk1dckJzyQQ==",
+  "dgSpecHash": "b50F0NL7dyTmMd8pYrZmHjIMrCcl5doWh6qxOPZUDvafa29wEZm1xdQhVNWu8sJjUxd7K2dyOA2KaupyW2i84A==",
   "success": true,
   "projectFilePath": "C:\\Users\\ridva\\Documents\\Github\\bootcamp-hw1\\bootcamp-hw1.csproj",
   "expectedPackageFiles": [
@@ -132,7 +132,8 @@
     "C:\\Users\\ridva\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\ridva\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\ridva\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\ridva\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\ridva\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\ridva\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.16\\microsoft.netcore.app.host.win-x64.5.0.16.nupkg.sha512"
   ],
   "logs": []
 }
