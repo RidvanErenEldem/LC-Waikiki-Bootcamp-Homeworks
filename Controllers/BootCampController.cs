@@ -21,20 +21,31 @@ namespace bootcamp_hw1.Controllers
         }
 
         [HttpGet]
-        public List<BootCamp> GetAll()
+        public async Task<List<BootCamp>> GetAllAsync()
         {
-            var bootcamps = context.BootCamp.ToList();
+            var bootcamps = await context.BootCamp.ToListAsync();
             return bootcamps;
         }
 
         [HttpPost]
-        public BootCamp Add([FromBody] BootCampResponse resource)
+        public async Task<BootCamp> Add([FromBody] BootCampResponse resource)
         {
             var bootcamp = new BootCamp();
             bootcamp.Name = resource.Name;
             bootcamp.Description = resource.Description;
-            var newBootCamp = context.BootCamp.Add(bootcamp);
-            context.SaveChanges();
+            var newBootCamp = await context.BootCamp.AddAsync(bootcamp);
+            await context.SaveChangesAsync();
+            return bootcamp;
+        }
+        [HttpPut]
+        public async Task<BootCamp> Update(int Id, [FromBody] BootCampResponse resource)
+        {
+            var bootcamp = new BootCamp();
+            bootcamp.Name = resource.Name;
+            bootcamp.Description = resource.Description;
+            bootcamp.Id = Id;
+            var updatedBootcamp = context.BootCamp.Update(bootcamp);
+            await context.SaveChangesAsync();
             return bootcamp;
         }
     }
