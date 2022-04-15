@@ -92,6 +92,5 @@ namespace bootcamp_hw1.Controllers
             else
                 return bootcamp;
         }
-        
     }
 }
