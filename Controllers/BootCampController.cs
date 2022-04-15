@@ -44,9 +44,54 @@ namespace bootcamp_hw1.Controllers
             bootcamp.Name = resource.Name;
             bootcamp.Description = resource.Description;
             bootcamp.Id = Id;
-            var updatedBootcamp = context.BootCamp.Update(bootcamp);
-            await context.SaveChangesAsync();
-            return bootcamp;
+            try
+            {
+                var updatedBootcamp = context.BootCamp.Update(bootcamp);
+                await context.SaveChangesAsync();
+                return bootcamp;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred when updating: {ex.Message}");
+                return null;
+            }
         }
+        [HttpDelete]
+        public async Task<BootCamp> Delete(int Id)
+        {
+            try
+            {
+                var bootcamp = await context.BootCamp.FindAsync(Id);
+                if(bootcamp == null)
+                {
+                    Console.WriteLine($"The bootcamp with id {Id} does not exist");
+                    return null;
+                }
+                var deletedBootcamp = context.BootCamp.Remove(bootcamp);
+                await context.SaveChangesAsync();
+                return bootcamp;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"An error occurred when deleting: {ex.Message}");
+                return null;
+            }
+        }
+        [HttpGet("{Id}/searchById")]
+        public async Task<BootCamp> SearchById(int Id)
+        {
+            var bootcamp = await context.BootCamp.FindAsync(Id);
+            if(bootcamp == null)
+            {
+                var bootCampResponse = new BootCamp();
+                bootCampResponse.Name = "thank you mario but bootcamp is in another castle";
+                bootCampResponse.Id = Id;
+                bootCampResponse.Description = null;
+                return bootCampResponse;
+            }
+            else
+                return bootcamp;
+        }
+        
     }
 }
